@@ -4,5 +4,4 @@
 
 - python 3*
 - selenium
-- pytest
 - firefox/chrome
