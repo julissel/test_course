@@ -1,9 +1,14 @@
 import pytest
 from selenium import webdriver
 
+'''
+Type any of command bellow in terminal for choosing browser:
+pytest -s -v --browser_name=chrome test_parser.py
+pytest -s -v --browser_name=firefox test_parser.py
+'''
 
 def pytest_addoption(parser):
-    parser.addoption('--browser_name', action='store', default=None, help='Chose browser: chrome or firefox')
+    parser.addoption('--browser_name', action='store', default='firefox', help='Chose browser: chrome or firefox')
 
 
 @pytest.fixture(scope="function")
