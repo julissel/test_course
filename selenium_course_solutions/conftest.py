@@ -18,7 +18,7 @@ def browser(request):
     if browser_name == 'chrome':
         print("\nstart browser Chrome for test..")
         browser = webdriver.Chrome()
-    elif browser_name =='firefox':
+    elif browser_name == 'firefox':
         print("\nstart browser Firefox for test..")
         browser = webdriver.Firefox()
     yield browser
