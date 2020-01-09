@@ -9,6 +9,7 @@ def test_guest_can_see_login_link(browser):
     page.should_be_login_link() # проверяем наличие объекта "ссылки" на странице
 
 def test_guest_can_go_to_login_page(browser):
+    # Тестируем страницу логина и регистрации
     link = "http://selenium1py.pythonanywhere.com/ru/accounts/login/"
     page = LoginPage(browser, link)
     page.open()
