@@ -6,7 +6,7 @@ def pytest_addoption(parser):
     parser.addoption('--language', action='store', default='en', help='Choose language')
     parser.addoption('--browser_name', action='store', default='firefox', help='Choose browser: chrome or firefox')
 
-@pytest.fixture(scope="function")
+@pytest.fixture(scope="session")
 def browser(request):
     browser_name = request.config.getoption('browser_name')
     user_language = request.config.getoption('language')
@@ -21,6 +21,7 @@ def browser(request):
         fp = webdriver.FirefoxProfile()
         fp.set_preference('intl.accept_language', user_language)
         browser = webdriver.Firefox(firefox_profile=fp)
+    #browser.implicitly_wait(5)
     yield browser
     print('\nQuit browser..')
     browser.quit()
