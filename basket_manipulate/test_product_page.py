@@ -1,11 +1,13 @@
 import time
+import pytest
 from .pages.product_page import PageObjectBasket
+main_link = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer'
 
-
-def test_guest_can_add_product_to_basket(browser):
-    link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear"
+@pytest.mark.parametrize('link', [pytest.param(f'{main_link}{x}', marks=pytest.mark.xfail) if x == 7 else f'{main_link}{x}' for x in range(10)])
+def test_guest_can_add_product_to_basket(browser, link):
+    #link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear"
     #"http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=newYear2019"
-    #"http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear"
+
     page = PageObjectBasket(browser, link)
     page.open()
     time.sleep(10)
