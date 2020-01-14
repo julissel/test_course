@@ -10,14 +10,21 @@ def test_guest_can_add_product_to_basket(browser, link):
 
     page = PageObjectBasket(browser, link)
     page.open()
-    time.sleep(10)
+    time.sleep(1)
 
     product_name = page.guest_can_see_product_name()
     product_price = page.guest_can_see_product_price()
 
     page.guest_can_add_to_basket()
     page.solve_quiz_and_get_code()
-    time.sleep(5)
+    time.sleep(2)
 
     page.guest_can_see_correct_product_name_in_message(product_name)
     page.guest_can_see_correct_product_price_in_message(product_price)
+    time.sleep(1)
+
+    page.should_see_success_message_after_adding_product_into_the_basket()
+    page.guest_can_close_success_message()
+    page.should_disappear_success_message()
+    time.sleep(1)
+    page.should_not_be_success_message()
