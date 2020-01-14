@@ -33,3 +33,19 @@ class PageObjectBasket(BasePage):
         product_message_price = self.browser.find_element(*BasketPageLocators.PRICE_IN_MESSAGE).text
         assert product_price == product_message_price
         print(f'\nProduct price in message {product_message_price}')
+
+
+    def should_see_succes_message_after_adding_product_into_the_basket(self):
+        assert self.is_element_present(*BasketPageLocators.SUCCESS_MESSAGE, "No success message after product was added into the basket")
+
+    def should_disappear_success_message(self):
+        assert self.is_disappeared(*BasketPageLocators.SUCCESS_MESSAGE, "Success message is not dissapeared after product was added into the basket")
+
+
+    def guest_can_close_success_message(self):
+        close_button = self.browser.find_element(*BasketPageLocators.CLOSE_SUCCESS_MESSAGE)
+        close_button.click()
+        time.sleep(1)
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*BasketPageLocators.SUCCESS_MESSAGE), "Success message is presented, but should not be"
