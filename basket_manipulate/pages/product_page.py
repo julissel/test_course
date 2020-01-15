@@ -48,4 +48,4 @@ class PageObjectBasket(BasePage):
         assert self.is_disappeared(*BasketPageLocators.BASKET_VALUE_MESSAGE), "Success message is not dissapeared after product was added into the basket"
 
     def should_not_be_success_message(self):
-        assert self.is_not_element_present(*BasketPageLocators.BASKET_VALUE_MESSAGE), "Success message is presented, but guest closed it one second ago"
+        assert self.is_not_element_present(*BasketPageLocators.BASKET_VALUE_MESSAGE), "Success message is presented, but should not be"
