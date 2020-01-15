@@ -10,3 +10,5 @@ class BasketPageLocators():
     PRODUCT_NAME_IN_MESSAGE = (By.CSS_SELECTOR, "div.alert:nth-child(1) > div:nth-child(2) > strong:nth-child(1)")
     BASKET_VALUE_MESSAGE = (By.CSS_SELECTOR, "div.alert:nth-child(3) > div:nth-child(2)")
     CLOSE_BASKET_VALUE_MESSAGE = (By.CSS_SELECTOR, "a.btn-info:nth-child(1)")
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_linc_inc")
