@@ -1,4 +1,4 @@
-'''Class Base Page'''
+'''Class BasePage'''
 
 import math
 from selenium.webdriver.support.ui import WebDriverWait

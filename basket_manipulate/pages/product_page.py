@@ -1,4 +1,4 @@
-''' class PageObject'''
+''' class PageObjectBasket'''
 
 import time
 from .base_page import BasePage
