@@ -6,11 +6,16 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from .locators import BasketPageLocators
 
+
 class BasePage():
     def __init__(self, browser, url, timeout=10):
         self.browser = browser
         self.url = url
         self.browser.implicitly_wait(timeout)
+
+    def go_to_basket_from_product_page(self):
+        pass
+
 
     def go_to_login_page(self):
         link = self.browser.find_element(*BasketPageLocators.LOGIN_LINK)

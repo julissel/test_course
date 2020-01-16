@@ -18,6 +18,7 @@ class PageObjectBasket(BasePage):
         print(f'\nProduct name before adding to the basket: {product_name}')
         return product_name
 
+    # Product Name after successful adding into basket
     def guest_can_see_correct_product_name_in_message(self, product_name):
         product_message_name = self.browser.find_element(*BasketPageLocators.PRODUCT_NAME_IN_MESSAGE).text
         assert product_message_name == product_name
@@ -29,6 +30,7 @@ class PageObjectBasket(BasePage):
         print(f'\nPrice of product before adding to the basket: {product_price}')
         return product_price
 
+    # Product Price after successful adding into basket
     def guest_can_see_correct_product_price_in_message(self, product_price):
         product_message_price = self.browser.find_element(*BasketPageLocators.PRICE_IN_MESSAGE).text
         assert product_price == product_message_price

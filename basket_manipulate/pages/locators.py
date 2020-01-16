@@ -12,3 +12,6 @@ class BasketPageLocators():
     CLOSE_BASKET_VALUE_MESSAGE = (By.CSS_SELECTOR, "a.btn-info:nth-child(1)")
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_linc_inc")
+    BASKET_BUTTON = (By.CSS_SELECTOR, ".btn-group > a:nth-child(1)")
+    BASKET_ITEMS = (By.CSS_SELECTOR, "[class='basket-items']")
+    BASKET_MESSAGE = (By.CSS_SELECTOR, "#content_inner")

@@ -3,14 +3,14 @@ import pytest
 from .pages.product_page import PageObjectBasket
 
 
-main_link = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer'
+link_0 = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer'
 link_1 = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=newYear2019"
 link_2 = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear"
 link_3 = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95"
 
 
-@pytest.mark.skip #(reason="Too many links in the test. Run only by demand. For running test put # in the begining of the string.")
-@pytest.mark.parametrize('link', [pytest.param(f'{main_link}{x}', marks=pytest.mark.xfail) if x == 7 else f'{main_link}{x}' for x in range(10)])
+@pytest.mark.skip(reason="Too many links in the test. Run only by demand. For running test put # in the begining of the string.")
+@pytest.mark.parametrize('link', [pytest.param(f'{link_0}{x}', marks=pytest.mark.xfail) if x == 7 else f'{link_0}{x}' for x in range(10)])
 def test_guest_can_add_product_to_basket(browser, link):
     page = PageObjectBasket(browser, link)
     page.open()
