@@ -27,12 +27,6 @@ def test_guest_can_add_product_to_basket(browser, link):
     page.guest_can_see_correct_product_price_in_message(product_price)
     time.sleep(1)
 
-    #page.should_see_success_message_after_adding_product_into_the_basket()
-    #page.guest_can_close_success_message()
-    #page.should_disappear_success_message()
-    #time.sleep(1)
-    #page.should_not_be_success_message()
-
 
 # Negative checks
 @pytest.mark.xfail(reason="this test is in development")
@@ -75,3 +69,13 @@ def test_guest_can_go_to_login_page_from_product_page(browser, link):
     page = PageObjectBasket(browser, link)
     page.open()
     page.go_to_login_page()
+
+
+@pytest.mark.parametrize('link', [link_1])
+def test_guest_cant_see_product_in_basket_opened_from_product_page(browser, link):
+    page = PageObjectBasket(browser, link)
+    page.open()
+    page.guest_can_open_basket_page_from_product_page()
+    time.sleep(1)
+    page.basket_grid_is_empty()
+    page.basket_is_empty_message()

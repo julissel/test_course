@@ -16,7 +16,6 @@ class BasePage():
     def go_to_basket_from_product_page(self):
         pass
 
-
     def go_to_login_page(self):
         link = self.browser.find_element(*BasketPageLocators.LOGIN_LINK)
         link.click()

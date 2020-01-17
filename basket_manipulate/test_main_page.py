@@ -2,6 +2,7 @@ import time
 import pytest
 from .pages.basket_page import BasketPage
 
+
 main_link = 'http://selenium1py.pythonanywhere.com'
 
 

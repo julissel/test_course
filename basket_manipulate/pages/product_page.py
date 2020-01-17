@@ -12,6 +12,12 @@ class PageObjectBasket(BasePage):
         basket_button.click()
         time.sleep(1)
 
+    # View basket
+    def guest_can_open_basket_page_from_product_page(self):
+        basket_button_on_product_page = self.browser.find_element(*BasketPageLocators.BASKET_BUTTON)
+        basket_button_on_product_page.click()
+        time.sleep(1)
+
     # Ptoduct Name
     def guest_can_see_product_name(self):
         product_name = self.browser.find_element(*BasketPageLocators.PRODUCT_NAME).text
@@ -37,14 +43,18 @@ class PageObjectBasket(BasePage):
         print(f'\nProduct price in message {product_message_price}')
 
 
+    # Checks for empty basket on basket page
+    def basket_grid_is_empty(self):
+        assert self.is_not_element_present(*BasketPageLocators.BASKET_ITEMS), "There is an item in the basket grid, but shoul not be."
+
+    def basket_is_empty_message(self):
+        message_in_empty_basket = self.browser.find_element(*BasketPageLocators.BASKET_MESSAGE).text
+        assert "basket is empty" in message_in_empty_basket, "Text 'Your basket is empty.' is not contained in the basket message."
+
+
     # Negative Checks for success message
     def should_see_success_message_after_adding_product_into_the_basket(self):
         assert self.is_element_present(*BasketPageLocators.BASKET_VALUE_MESSAGE), "No success message after product was added into the basket"
-
-    def guest_can_close_success_message(self):
-        close_button = self.browser.find_element(*BasketPageLocators.CLOSE_BASKET_VALUE_MESSAGE)
-        close_button.click()
-        time.sleep(1)
 
     def should_disappear_success_message(self):
         assert self.is_disappeared(*BasketPageLocators.BASKET_VALUE_MESSAGE), "Success message is not dissapeared after product was added into the basket"

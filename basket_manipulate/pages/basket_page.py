@@ -2,6 +2,7 @@ import time
 from .base_page import BasePage
 from .locators import BasketPageLocators
 
+
 class BasketPage(BasePage):
     def guest_can_open_basket_page(self):
         basket_button_on_main_page = self.browser.find_element(*BasketPageLocators.BASKET_BUTTON)
