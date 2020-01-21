@@ -1,6 +1,7 @@
 import time
 import pytest
 from .pages.product_page import PageObjectBasket
+from .pages.login_page import LoginPage
 
 
 link_0 = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer'
@@ -9,7 +10,26 @@ link_2 = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbo
 link_3 = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95"
 
 
-@pytest.mark.skip(reason="Too many links in the test. Run only by demand. For running test put # in the begining of the string.")
+class TestUserAddToBasketFromProductPage(PageObjectBasket):
+    @pytest.fixture(scope ="function", autouse=True)
+    def setup(self):
+        '''
+        открыть страницу регистрации
+        зарегистрировать нового пользователя
+        проверить, что пользователь залогинен
+        '''
+        pass
+
+    @pytest.mark.need_review
+    def test_user_cant_see_success_message(self, browser, link):
+        page = PageObjectBasket(browser, link)
+        page.open()
+        page.should_not_be_success_registration_message()
+
+    def test_user_can_add_product_to_basket(self):
+        pass
+
+@pytest.mark.skip(reason="Too many links in the test. Run only by demand. For running test put # in the begining of this string.")
 @pytest.mark.parametrize('link', [pytest.param(f'{link_0}{x}', marks=pytest.mark.xfail) if x == 7 else f'{link_0}{x}' for x in range(10)])
 def test_guest_can_add_product_to_basket(browser, link):
     page = PageObjectBasket(browser, link)

@@ -2,7 +2,7 @@ from typing import Tuple
 from selenium.webdriver.common.by import By
 
 
-class BasketPageLocators():
+class BasePageLocators():
     BUTTON_ADD = (By.CSS_SELECTOR, "[class='btn btn-lg btn-primary btn-add-to-basket']")
     PRICE_OF_PRODUCT = (By.CSS_SELECTOR, "[class='price_color']")
     PRODUCT_NAME = (By.TAG_NAME, "h1")
@@ -14,4 +14,10 @@ class BasketPageLocators():
     BASKET_BUTTON = (By.CSS_SELECTOR, ".btn-group > a:nth-child(1)")
     BASKET_ITEMS = (By.CSS_SELECTOR, "[class='basket-items']")
     BASKET_MESSAGE = (By.CSS_SELECTOR, "#content_inner")
+    USER_ICON = (By.CSS_SELECTOR, ".icon-user")
+    # Registration new user
+    USER_EMAIL_ADDRESS = (By.CSS_SELECTOR, "#id_registration-email")
+    USER_PASSWORD = (By.CSS_SELECTOR, "#id_registration-password1")
+    USER_CONFIRM_PASSWORD = (By.CSS_SELECTOR, "#id_registration-password2")
+    CONFIRM_REGISTRATION = (By.CSS_SELECTOR, "#register_form > button:nth-child(7)")
 
