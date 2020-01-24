@@ -8,26 +8,44 @@ link_0 = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?pr
 link_1 = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=newYear2019"
 link_2 = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear"
 link_3 = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95"
+link_login = "http://selenium1py.pythonanywhere.com/en-gb/accounts/login/"
 
-
-class TestUserAddToBasketFromProductPage(PageObjectBasket):
+class TestUserAddToBasketFromProductPage():
     @pytest.fixture(scope ="function", autouse=True)
-    def setup(self):
-        '''
-        открыть страницу регистрации
-        зарегистрировать нового пользователя
-        проверить, что пользователь залогинен
-        '''
-        pass
+    def setup(self, browser):
+        self.page = LoginPage(browser, link_login)
+        self.page.open()
+        user_tmp_generated_word = str(time.time())
+        user_email = user_tmp_generated_word + "@tmp_mail.com"
+        user_password = user_tmp_generated_word[-1:1] + user_tmp_generated_word[0:-1]
+        self.page.register_new_user(user_email, user_password)
+        time.sleep(1)
+        self.page.should_be_authorized_user()
 
-    @pytest.mark.need_review
+    #@pytest.mark.need_review
+    @pytest.mark.parametrize('link', [link_3])
     def test_user_cant_see_success_message(self, browser, link):
         page = PageObjectBasket(browser, link)
         page.open()
-        page.should_not_be_success_registration_message()
+        page.should_not_be_success_message()
 
-    def test_user_can_add_product_to_basket(self):
-        pass
+    @pytest.mark.parametrize('link', [link_3])
+    def test_user_can_add_product_to_basket(self, browser, link):
+        page = PageObjectBasket(browser, link)
+        page.open()
+        time.sleep(1)
+
+        product_name = page.guest_can_see_product_name()
+        product_price = page.guest_can_see_product_price()
+
+        page.guest_can_add_to_basket()
+        page.solve_quiz_and_get_code()
+        time.sleep(1)
+
+        page.guest_can_see_correct_product_name_in_message(product_name)
+        page.guest_can_see_correct_product_price_in_message(product_price)
+        time.sleep(1)
+
 
 @pytest.mark.skip(reason="Too many links in the test. Run only by demand. For running test put # in the begining of this string.")
 @pytest.mark.parametrize('link', [pytest.param(f'{link_0}{x}', marks=pytest.mark.xfail) if x == 7 else f'{link_0}{x}' for x in range(10)])
