@@ -1,11 +1,11 @@
 '''Class LoginPage'''
-import time
 from .base_page import BasePage
 from .locators import BasePageLocators
 
 
 class LoginPage(BasePage):
     def register_new_user(self, email, password):
+
         # input email
         email_form = self.browser.find_element(*BasePageLocators.USER_EMAIL_ADDRESS)
         email_form.send_keys(email)

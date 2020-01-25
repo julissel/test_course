@@ -1,6 +1,6 @@
 import time
 from .base_page import BasePage
-from .locators import BasketPageLocators
+from .locators import BasePageLocators
 
 
 class BasketPage(BasePage):

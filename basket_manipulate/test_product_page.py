@@ -16,20 +16,21 @@ class TestUserAddToBasketFromProductPage():
         self.page = LoginPage(browser, link_login)
         self.page.open()
         user_tmp_generated_word = str(time.time())
-        user_email = user_tmp_generated_word + "@tmp_mail.com"
-        user_password = user_tmp_generated_word[-1:1] + user_tmp_generated_word[0:-1]
-        self.page.register_new_user(user_email, user_password)
+        user_email = user_tmp_generated_word[-9:-1] + "@tmpmail.com"
+        user_password = str(user_tmp_generated_word[-1:1] + user_tmp_generated_word[0:-1])
         time.sleep(1)
+        self.page.register_new_user(user_email, user_password)
+        time.sleep(3)
         self.page.should_be_authorized_user()
 
-    #@pytest.mark.need_review
     @pytest.mark.parametrize('link', [link_3])
     def test_user_cant_see_success_message(self, browser, link):
         page = PageObjectBasket(browser, link)
         page.open()
         page.should_not_be_success_message()
 
-    @pytest.mark.parametrize('link', [link_3])
+    @pytest.mark.need_review
+    @pytest.mark.parametrize('link', [link_1])
     def test_user_can_add_product_to_basket(self, browser, link):
         page = PageObjectBasket(browser, link)
         page.open()

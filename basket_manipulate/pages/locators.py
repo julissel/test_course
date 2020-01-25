@@ -19,5 +19,5 @@ class BasePageLocators():
     USER_EMAIL_ADDRESS = (By.CSS_SELECTOR, "#id_registration-email")
     USER_PASSWORD = (By.CSS_SELECTOR, "#id_registration-password1")
     USER_CONFIRM_PASSWORD = (By.CSS_SELECTOR, "#id_registration-password2")
-    CONFIRM_REGISTRATION = (By.CSS_SELECTOR, "[class='btn btn-lg btn-primary']")#"#register_form > button:nth-child(7)")
+    CONFIRM_REGISTRATION = (By.CSS_SELECTOR, "#register_form > button:nth-child(7)")
     LOGOUT_BUTTON = (By.CSS_SELECTOR, "#logout_link")
