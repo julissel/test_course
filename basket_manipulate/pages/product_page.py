@@ -1,5 +1,4 @@
 ''' class PageObjectBasket'''
-
 import time
 from .base_page import BasePage
 from .locators import BasePageLocators
@@ -18,6 +17,7 @@ class PageObjectBasket(BasePage):
         basket_button_on_product_page.click()
         time.sleep(1)
 
+
     # Ptoduct Name
     def guest_can_see_product_name(self):
         product_name = self.browser.find_element(*BasePageLocators.PRODUCT_NAME).text
@@ -29,6 +29,7 @@ class PageObjectBasket(BasePage):
         product_message_name = self.browser.find_element(*BasePageLocators.PRODUCT_NAME_IN_MESSAGE).text
         assert product_message_name == product_name
         print(f'\nProduct name in message: {product_message_name}')
+
 
     # Product Price
     def guest_can_see_product_price(self):

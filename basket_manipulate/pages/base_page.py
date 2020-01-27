@@ -1,5 +1,4 @@
 '''Class BasePage'''
-
 import math
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -12,9 +11,6 @@ class BasePage():
         self.browser = browser
         self.url = url
         self.browser.implicitly_wait(timeout)
-
-    def go_to_basket_from_product_page(self):
-        pass
 
     def should_be_authorized_user(self):
         assert self.is_element_present(*BasePageLocators.USER_ICON), "No user icon, probably unauthorised user"
