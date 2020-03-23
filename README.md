@@ -6,3 +6,6 @@
 - selenium
 - firefox/chrome
 - pytest
+
+Получен сертификат по окончанию курса "Автоматизация тестирования с помощью Selenium и Python":
+https://stepik.org/cert/272417 
